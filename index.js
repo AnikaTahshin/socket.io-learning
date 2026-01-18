@@ -10,11 +10,9 @@ const io = new Server(expressServer);
 io.on("connection", (socket) => {
   console.log("New User Connected");
 
-  setInterval(() => {
-    let d = new Date();
-    let t = d.getTime();
-    socket.emit("MyEvent", t)
-  },500)
+  socket.on('message',(msg) => {
+    console.log(msg);
+  })
 })
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");

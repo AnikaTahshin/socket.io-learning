@@ -8,16 +8,18 @@
 </head>
 
 <body>
-    <h1 id="myTime"></h1>
+<input type="text" id="name" placeholder="Type a name...">
+<button onclick="send()" id="send">Send</button>
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
-    let socket = io();
-    socket.on('MyEvent', (msg) => {
-        document.getElementById('myTime').innerHTML="";
-        document.getElementById('myTime').innerHTML=msg;
-    })
+    
+let socket = io();
 
+function send() {
+    let name = document.getElementById('name').value;
+    socket.send(name);
+}
 </script>
 </body>
 
