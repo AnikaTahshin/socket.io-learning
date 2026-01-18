@@ -7,9 +7,17 @@ const expressServer = http.createServer(app);
 const {Server} = require('socket.io');
 const io = new Server(expressServer);
 
-io.on("connection",(socket) =>{
-io.sockets.emit("MyBroadcast","Hello Everyone")
+let buyNamespace = io.of("/buy")
+buyNamespace.on("connection",(socket) =>{
+buyNamespace.emit("MyEvent","Hello Buy")
 })
+
+
+let sellNamespace = io.of("/sell")
+sellNamespace.on("connection",(socket) =>{
+sellNamespace.emit("MyEvent","Hello Sell")
+})
+
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
   

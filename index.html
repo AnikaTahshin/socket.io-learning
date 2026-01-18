@@ -13,8 +13,8 @@
 <script src="/socket.io/socket.io.js"></script>
 <script>
     
-let socket = io();
-socket.on("MyBroadcast",(data)=>{
+let socket = io("/buy");
+socket.on("MyEvent",(data)=>{
     document.getElementById("msg").innerText=data
 })
 
