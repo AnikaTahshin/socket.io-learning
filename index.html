@@ -8,18 +8,16 @@
 </head>
 
 <body>
-<input type="text" id="name" placeholder="Type a name...">
-<button onclick="send()" id="send">Send</button>
+<h1 id="msg"></h1>
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
     
 let socket = io();
+socket.on("MyBroadcast",(data)=>{
+    document.getElementById("msg").innerText=data
+})
 
-function send() {
-    let name = document.getElementById('name').value;
-    socket.send(name);
-}
 </script>
 </body>
 

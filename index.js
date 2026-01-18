@@ -7,12 +7,8 @@ const expressServer = http.createServer(app);
 const {Server} = require('socket.io');
 const io = new Server(expressServer);
 
-io.on("connection", (socket) => {
-  console.log("New User Connected");
-
-  socket.on('message',(msg) => {
-    console.log(msg);
-  })
+io.on("connection",(socket) =>{
+io.sockets.emit("MyBroadcast","Hello Everyone")
 })
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
