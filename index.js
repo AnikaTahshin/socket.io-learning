@@ -13,7 +13,7 @@ io.on("connection", (socket) => {
   setInterval(() => {
     let d = new Date();
     let t = d.getTime();
-    socket.send(t)
+    socket.emit("MyEvent", t)
   },500)
 })
 app.get("/", (req, res) => {
